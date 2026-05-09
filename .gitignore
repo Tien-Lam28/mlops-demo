@@ -216,3 +216,15 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Bỏ qua dữ liệu và model (vì đã có DVC lo)
+/data/*
+/models/*
+!/data/.gitkeep
+!/models/.gitkeep
+
+# Bỏ qua log và report sinh ra trong quá trình chạy local
+/logs/*
+!/logs/.gitkeep
+/reports/*
+!/reports/.gitkeep
