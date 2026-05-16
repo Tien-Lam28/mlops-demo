@@ -237,7 +237,7 @@ def preprocess(reference_data, current_data, model):
     )
 
     reference_evidently = Dataset.from_pandas(
-        cur_df,
+        ref_df,
         data_definition=data_definition
     )
 
@@ -281,7 +281,7 @@ def analyze_drift(report, drift_threshold=0.3):
 
 
 #load 2 dataset tu dev1 va dev2
-reference_data, current_data = load_data(logs_path, train_path)
+reference_data, current_data = load_data(train_path, logs_path)
 #load model tu file train.py
 model = load_model(model_path)
 
