@@ -265,8 +265,9 @@ def save_report(report, save_path):
     print(f"✅ Report đã được lưu an toàn tại: {save_path}")
 
 def analyze_drift(report, drift_threshold=0.3):
-    result = report.as_dict()
-    drift_share = result["metrics"][0]["result"]["share_of_drifted_columns"]
+    result = report.dict()
+    #print(json.dumps(result["metrics"][0], indent=2, default=str))
+    drift_share = result["metrics"][0]["value"]["share"]
 
     if drift_share >= drift_threshold:
         print(f"\n🚨 ALERT! Tỷ lệ drift vượt ngưỡng ({drift_share:.2%} >= {drift_threshold:.0%})")
