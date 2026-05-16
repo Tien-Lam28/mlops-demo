@@ -280,18 +280,35 @@ def analyze_drift(report, drift_threshold=0.3):
         print(f"\n✅ Model đang hoạt động ổn định ({drift_share:.2%}).")     
 
 
-#load 2 dataset tu dev1 va dev2
-reference_data, current_data = load_data(train_path, logs_path)
-#load model tu file train.py
-model = load_model(model_path)
+def main():
+    """
+    Hàm điều phối chính cho luồng theo dõi (monitoring workflow).
+    """
+    print("=== BẮT ĐẦU QUÁ TRÌNH KIỂM TRA DRIFT ===")
 
-#chuan bi dinh dang cua data de tao report
-reference_evidently, current_evidently = preprocess(reference_data, current_data, model)
+    # 1. Load data từ dev1 và dev2
 
-#tao va luu report 
-report = generate_report(reference_evidently, current_evidently)
-save_report(report, report_path)
+    reference_data, current_data = load_data(train_path, logs_path)
 
-analyze_drift(report)
+    # 2. Load model từ file train.py
+    model = load_model(model_path)
+
+    # 3. Chuẩn bị định dạng của data để tạo report
+    reference_evidently, current_evidently = preprocess(reference_data, current_data, model)
+
+    # 4. Tạo report
+    report = generate_report(reference_evidently, current_evidently)
+
+    # 5. Lưu report
+    save_report(report, report_path)
+
+    # 6. Phân tích drift để đưa ra cảnh báo
+    analyze_drift(report)
+
+    print("=== HOÀN THÀNH QUÁ TRÌNH KIỂM TRA ===")
+
+# Khối lệnh này đảm bảo hàm main() chỉ chạy KHI VÀ CHỈ KHI file này được chạy trực tiếp
+if __name__ == "__main__":
+    main()
 
 
