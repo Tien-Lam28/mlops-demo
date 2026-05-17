@@ -1,22 +1,18 @@
 FROM python:3.13-slim
-#Dùng slim chứ bản thường build gần 50p chịu
+
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
 
 WORKDIR /app
-#Chọn thư mục làm việc bên trong container
 
-COPY pyproject.toml .
-#Copy dependencies để khi src đổi không phải cài lại depecdencies từ đầu
+COPY pyproject.toml uv.lock ./
 
-RUN pip install .
-#tải thư viện cần thiết
+RUN uv sync --frozen
 
 COPY . .
-# Copy full workspace
 
-EXPOSE 8000 
-#Khai báo cổng
+EXPOSE 8000
 
-CMD ["uvicorn", "src.api:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uv", "run", "uvicorn", "src.api:app", "--host", "0.0.0.0", "--port", "8000"]
 #Lênhh chạy khi chạy docker
 
 #Build docker:
