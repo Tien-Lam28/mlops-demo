@@ -3,7 +3,8 @@ import requests
 import time
 
 # Đọc dữ liệu drift
-df = pd.read_csv("data/drift_data.csv")
+path = "data/drift_data.csv"
+df = pd.read_csv(path)
 
 # URL API
 API_URL = "http://127.0.0.1:8000/predict"
