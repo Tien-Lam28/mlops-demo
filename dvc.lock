@@ -11,11 +11,12 @@ stages:
       hash: md5
       md5: d70844049b7814f08767e50f93227f2a
       size: 1109
+      isexec: true
     outs:
     - path: models/model.pkl
       hash: md5
-      md5: 70b2ed41549c19863398c1eccc525bd6
-      size: 700329
+      md5: c93ad1e515bfc3424c6f211447272a8c
+      size: 700169
   generate_data:
     cmd: uv run python src/generate_train_data.py
     deps:
@@ -23,6 +24,7 @@ stages:
       hash: md5
       md5: f39d13ea07a3b1190fd50ced8d024679
       size: 2675
+      isexec: true
     outs:
     - path: data/train_data.csv
       hash: md5
@@ -35,6 +37,7 @@ stages:
       hash: md5
       md5: 0e10f8adb1f98b160d43844b1b11bea9
       size: 3053
+      isexec: true
     outs:
     - path: data/drift_data.csv
       hash: md5
@@ -49,9 +52,10 @@ stages:
       size: 36258
     - path: src/api.py
       hash: md5
-      md5: 476a6b9333ecd229e995181a30d1af19
-      size: 3171
+      md5: f838921f41b04d983a3e947e7a2b3cf1
+      size: 3161
     - path: src/simulate_request.py
       hash: md5
       md5: 03b59e7dbac2c0d78a27429fd4d2738c
       size: 966
+      isexec: true
