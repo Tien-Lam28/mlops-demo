@@ -27,8 +27,8 @@ stages:
   simulate_drift:
     cmd: uv run python src/simulate_request.py
     deps:
+      - src/api.py
       - src/simulate_request.py
       - data/drift_data.csv #Khi gọi dvc thấy thiếu file drift_data.csv sẽ tự 
                             #quét các đầu ra "outs" ở các stage và tự chạy stage generate_drift
-    outs:
-      - logs/inference_logs.csv 
+    # Không lưu logs lại nữa vì ggcloud đã quản lí và cập nhật liên tục

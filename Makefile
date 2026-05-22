@@ -20,3 +20,5 @@ docker-run:
 simulate-drift:
 	dvc exp run simulate_drift
 	
+update-logs:
+	gcloud storage cp gs://mlops-demo-hcmus-bucket/inference_logs.csv logs/inference_logs.csv

@@ -47,12 +47,11 @@ stages:
       hash: md5
       md5: 15e8afc935cdf6c67e0933fd44e55d10
       size: 36258
+    - path: src/api.py
+      hash: md5
+      md5: 476a6b9333ecd229e995181a30d1af19
+      size: 3171
     - path: src/simulate_request.py
       hash: md5
       md5: 03b59e7dbac2c0d78a27429fd4d2738c
       size: 966
-    outs:
-    - path: logs/inference_logs.csv
-      hash: md5
-      md5: 53aaebe2025c49d6dd3651dc6fe7ba4b
-      size: 67280
