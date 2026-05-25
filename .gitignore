@@ -231,3 +231,4 @@ __marimo__/
 !/reports/.gitkeep
 !/reports/drift_metrics.json
 !/reports/retrain_decision.json
+notes.md
